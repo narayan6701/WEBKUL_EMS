@@ -103,7 +103,7 @@ class UserRegisterController extends Controller
             DB::commit();
 
             // redirect to root URL (not route('/'))
-            return redirect('/')->with('status', 'Registration successful.');
+            return redirect('/user_login')->with('status', 'Registration successful.');
         } catch (\Throwable $e) {
             DB::rollBack();
             

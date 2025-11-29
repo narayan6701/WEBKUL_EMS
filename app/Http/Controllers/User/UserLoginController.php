@@ -46,12 +46,12 @@ class UserLoginController extends Controller
     {
         // 1. If Admin is logged in, send to Admin Dashboard
         if (\Illuminate\Support\Facades\Auth::guard('admin')->check()) {
-            return redirect()->route('admin_dashboard');
+            return redirect('/admin_dashboard');
         }
 
         // 2. If User is logged in, send to User Profile
         if (\Illuminate\Support\Facades\Auth::check()) {
-            return redirect()->route('user_profile');
+            return redirect('/user_profile');
         }
 
         // 3. Otherwise, show the login form

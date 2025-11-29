@@ -4,7 +4,7 @@
 @section('content')
 <div class="dashboard-container">
     <header class="dashboard-header">
-        <h1>Viewing Employee: {{ $employee->name }}</h1>
+        <h1>Viewing Details of Employee: {{ $employee->name }}</h1>
         <a href="{{ route('admin_dashboard') }}">Back to List</a>
     </header>
 

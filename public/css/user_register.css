@@ -1,0 +1,415 @@
+/* Reset + basics */
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #ffffff;
+    --primary: #0d6efd;
+    --border: #d7dbe0;
+    --gap: 1rem;
+    --max-width: 1000px;
+    --right-col: 200px;
+}
+
+.mega {
+    display: flex;
+    justify-content: center;
+    padding: 5rem 1rem;
+}
+
+/* Main form card */
+.register-form {
+    max-width: var(--max-width);
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr var(--right-col);
+    gap: 1.25rem;
+    box-shadow: 0 6px 18px rgba(10, 10, 10, 0.04);
+}
+
+/* Left column layout (fields) */
+.form-left {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* dense two-column layout */
+    gap: var(--gap);
+}
+
+/* Make many blocks span full width */
+.form-left .block {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 0.5rem;
+}
+
+/* Allow fieldsets to sit in their own column (Permanent/Current Address) */
+.form-left fieldset {
+    display: grid;
+    gap: 0.5rem;
+    grid-column: auto; /* allow fieldsets to sit in their own column */
+}
+
+/* Pair/grid inside blocks */
+.pair,
+.pair > div {
+    display: grid;
+}
+.pair {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+/* Qualifications / experiences row: input + add button aligned on one row */
+.qual-row,
+.exp-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+.qual-row input,
+.exp-row input {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* Right column (profile + actions) */
+.form-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+/* Profile block */
+.profile-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+}
+
+/* center profile preview & upload button in right column */
+.form-right .profile-block {
+    align-items: center; /* center children horizontally */
+    text-align: center;
+}
+
+.form-right .avatar-preview {
+    margin: 0 auto;
+}
+
+.form-right .upload {
+    margin: 0 auto;
+    display: inline-flex;
+}
+
+/* framed square preview */
+.avatar-preview {
+    width: 100%;
+    max-width: 220px;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    border: 3px solid #e6eef6;
+    padding: 4px;
+    box-sizing: border-box;
+}
+.avatar-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+/* REMOVE this entire block that styles the input directly */
+/*
+#profile_picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 0.85rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+    background: #fbfdff;
+    color: #111827;
+    cursor: pointer;
+    max-width: 12rem;
+}
+*/
+
+/* ADD these new styles instead */
+
+/* 1. Style for the visible upload button (the label) */
+.upload-btn {
+    display: inline-block;
+    padding: 0.55rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.95rem;
+    background: #fff;
+    color: #374151;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+.upload-btn:hover {
+    background: #f8fafc;
+    border-color: #cdd3da;
+}
+
+/* 2. Helper class to properly hide the input while keeping it accessible */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* 3. The magic: Style the button when the hidden input is invalid */
+.visually-hidden:required:invalid + .upload-btn {
+    border-color: #dc3545; /* A standard red error color */
+    color: #dc3545;
+}
+
+/* Inputs / selects */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+    background: #fbfdff;
+    color: #111827;
+}
+
+/* Labels */
+label,
+legend {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+    color: #111827;
+}
+
+/* Buttons */
+button,
+.btn {
+    padding: 0.55rem 0.85rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+.btn-primary:hover {
+    background: #0b5ed7;
+}
+
+.btn-reset {
+    background: #fff;
+    color: #374151;
+    border-color: #e2e8f0;
+}
+.btn-reset:hover {
+    background: #f8fafc;
+}
+
+/* small link list */
+.links {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.links a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* remove button for dynamic items */
+.remove-btn {
+    padding: 0.45rem 0.6rem;
+    background: #fff;
+    color: #c53030;
+    border: 1px solid #f3d6d6;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* helper text */
+.helper {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* make action buttons vertical and full-width in the right column */
+.form-right .action-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 1rem; /* keep previous spacing */
+}
+
+.form-right .action-group .btn,
+.form-right .action-group button {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ensure primary button appears after reset with clear visual weight */
+.form-right .action-group .btn-primary {
+    order: 1;
+}
+.form-right .action-group #resetBtn {
+    order: 2;
+}
+
+/* Responsiveness: collapse columns on smaller screens */
+@media (max-width: 980px) {
+    .register-form {
+        grid-template-columns: 1fr 280px;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .avatar-preview {
+        max-width: 180px;
+    }
+    .upload {
+        max-width: 180px;
+        width: 100%;
+    }
+    .form-left {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile: single column, keep compact to avoid scrolling where possible */
+@media (max-width: 720px) {
+    .register-form {
+        grid-template-columns: 1fr;
+        padding: 0.75rem;
+        gap: 0.6rem;
+    }
+    .form-right {
+        order: 2;
+        width: 100%;
+    }
+    .form-left {
+        order: 1;
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+    }
+    .avatar-preview {
+        max-width: 140px;
+    }
+    .upload {
+        width: 140px;
+    }
+    .btn,
+    button {
+        width: 100%;
+    }
+}
+
+/* Ensure small spacing does not cause overflow */
+.register-form,
+.register-form * {
+    margin: 0;
+}
+
+/* add vertical spacing between dynamically added qualification/experience items */
+.qual-item + .qual-item,
+.exp-item + .exp-item {
+    margin-top: 0.75rem; /* adjust value as needed */
+}
+
+/* ensure the rows inside each item keep their existing alignment */
+.qual-item .qual-row,
+.exp-item .exp-row {
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+/* icon buttons (plus/minus) */
+.icon-btn,
+.remove-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 1.15rem;
+    line-height: 1;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid var(--border);
+}
+
+/* style for add (plus) button */
+.icon-btn {
+    color: var(--primary);
+}
+
+/* style for remove (minus) button */
+.remove-btn {
+    color: #c53030;
+    border-color: #f3d6d6;
+}
+
+/* keep spacing when icon buttons sit next to inputs */
+.qual-row .icon-btn,
+.exp-row .icon-btn,
+.qual-row .remove-btn,
+.exp-row .remove-btn {
+    margin-left: 0.5rem;
+}
+
+/* preserve original input flex behavior */
+.qual-row input,
+.exp-row input {
+    flex: 1 1 auto;
+}
+
+#curr_line1,
+#curr_line2,
+#perm_line1,
+#perm_line2 {
+    min-width: 15rem;
+}
+
+fieldset {
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+}

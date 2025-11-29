@@ -1,0 +1,21 @@
+/* ...existing code... */
+.site-footer {
+    border-top: 1px solid #930d0d;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.site-footer .footer-site-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: rgba(163, 205, 247, 0.396);
+}
+
+small {
+    font-weight: bold;
+    font-size: 1rem;
+}

@@ -1,0 +1,73 @@
+/* Table styles for the admin employee list */
+.employee-list-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 0; /* Remove padding to let the table fill the card */
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05),
+        0 2px 4px -2px rgb(0 0 0 / 0.05);
+    overflow-x: auto; /* Allows horizontal scrolling on small screens */
+}
+
+.employee-table {
+    width: 100%;
+    border-collapse: collapse; /* Removes space between cells */
+    text-align: left;
+}
+
+.employee-table thead {
+    background-color: #f9fafb; /* Light grey header */
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.employee-table th {
+    padding: 1rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.employee-table tbody tr {
+    border-bottom: 1px solid #f3f4f6; /* Light line between rows */
+    transition: background-color 0.15s ease-in-out;
+}
+
+.employee-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.employee-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.employee-table td {
+    padding: 1rem 1.5rem;
+    color: #374151;
+    vertical-align: middle;
+}
+
+.employee-table .action-link {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    color: #2563eb;
+    background-color: #eff6ff;
+    border-radius: 9999px; /* Pill shape */
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.employee-table .action-link:hover {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+.empty-row td {
+    text-align: center;
+    padding: 2rem;
+    color: #6b7280;
+    font-style: italic;
+}

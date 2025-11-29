@@ -1,0 +1,24 @@
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.header-site-container {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: rgba(163, 205, 247, 0.396);
+    border-bottom: 1px solid #930d0d;
+}
+
+.logo {
+    height: 50px;
+    vertical-align: middle;
+}
+
+.branding {
+    font-weight: bold;
+    margin-left: 0.5rem;
+    font-size: 2.25rem;
+    color: rgb(112, 0, 11);
+}

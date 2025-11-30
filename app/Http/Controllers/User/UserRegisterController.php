@@ -22,6 +22,7 @@ class UserRegisterController extends Controller
             'name' => 'required|string|max:150',
             'dob' => 'required|date',
             'email' => 'required|email|max:150|unique:users,email',
+            'phone'=>'required|unique:users,email',
             
             // This 'confirmed' rule handles the password mismatch validation
             'password' => 'required|confirmed', 
@@ -64,6 +65,7 @@ class UserRegisterController extends Controller
                 'name' => $data['name'],
                 'dob' => $data['dob'],
                 'email' => $data['email'],
+                'phone'=> $data['phone'],
                 'password' => $data['password'],
                 'profile_picture' => $profilePath, // null -> DB default will apply if set
             ]);

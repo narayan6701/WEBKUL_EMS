@@ -61,6 +61,10 @@
                     <input type="email" id="email" value="{{ $user->email }}" disabled>
                 </div>
                 <div class="form-group-user">
+                    <label for="phone">Phone</label>
+                    <input type="phone" id="phone" value="{{ $user->phone }}" disabled>
+                </div>
+                <div class="form-group-user">
                     <label for="dob">Date of Birth</label>
                     <input type="date" id="dob" name="dob" value="{{ old('dob', $user->dob ? $user->dob->format('Y-m-d') : '') }}" required>
                 </div>

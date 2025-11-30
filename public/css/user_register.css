@@ -125,22 +125,7 @@
     display: block;
 }
 
-/* REMOVE this entire block that styles the input directly */
-/*
-#profile_picture {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.55rem 0.85rem;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    font-size: 0.95rem;
-    background: #fbfdff;
-    color: #111827;
-    cursor: pointer;
-    max-width: 12rem;
-}
-*/
+
 
 /* ADD these new styles instead */
 
@@ -163,19 +148,6 @@
     border-color: #cdd3da;
 }
 
-/* 2. Helper class to properly hide the input while keeping it accessible */
-.visually-hidden {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-}
-
 /* 3. The magic: Style the button when the hidden input is invalid */
 .visually-hidden:required:invalid + .upload-btn {
     border-color: #dc3545; /* A standard red error color */
@@ -185,6 +157,7 @@
 /* Inputs / selects */
 input[type="text"],
 input[type="email"],
+input[type="phone"],
 input[type="password"],
 input[type="date"],
 select,

@@ -38,11 +38,11 @@ Route::get('/user_login', function () {
         return redirect('/user_profile');
     }
 
-    $controller = app()->make(\App\Http\Controllers\User\UserLoginController::class);
+    $controller = app()->make(UserLoginController::class);
     $resp = $controller->showLoginForm();
 
     // Ensure we return a Response instance and attach no-cache headers
-    if ($resp instanceof \Illuminate\Http\Response) {
+    if ($resp instanceof Response) {
         return $resp->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
                     ->header('Pragma', 'no-cache')
                     ->header('Expires', '0');
@@ -95,10 +95,10 @@ Route::get('/admin_login', function () {
         return redirect('/user_profile');
     }
 
-    $controller = app()->make(\App\Http\Controllers\Admin\AdminLoginController::class);
+    $controller = app()->make(AdminLoginController::class);
     $resp = $controller->showLoginForm();
 
-    if ($resp instanceof \Illuminate\Http\Response) {
+    if ($resp instanceof Response) {
         return $resp->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
                     ->header('Pragma', 'no-cache')
                     ->header('Expires', '0');

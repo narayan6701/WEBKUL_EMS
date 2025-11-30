@@ -16,12 +16,12 @@ class AdminLoginController extends Controller
     public function showLoginForm()
     {
         // 1. If Admin is logged in, send to Admin Dashboard
-        if (\Illuminate\Support\Facades\Auth::guard('admin')->check()) {
+        if (Auth::guard('admin')->check()) {
             return redirect()->route('admin_dashboard');
         }
 
         // 2. If User is logged in, send to User Profile
-        if (\Illuminate\Support\Facades\Auth::check()) {
+        if (Auth::check()) {
             return redirect()->route('user_profile');
         }
 
@@ -35,13 +35,13 @@ class AdminLoginController extends Controller
             'password' => 'required',
         ]);
 
-        if(Auth::guard('admin')->attempt($credentials, $request->filled('remember'))){
+        if (Auth::guard('admin')->attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
             return redirect()->intended('/admin_dashboard');
         }
 
         return back()->withErrors([
-            'email'=>'The provided details do not match our records.'
+            'email' => 'The provided details do not match our records.'
         ])->onlyInput('email');
     }
 

@@ -20,8 +20,8 @@
         @csrf
         
         <div class="form-group">
-            <label for="email">Email Address</label>
-            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus placeholder="Enter your email">
+            <label for="cred">Email or Phone</label>
+            <input id="cred" type="text" name="email" required autofocus placeholder="Enter your Email / Phone">
         </div>
 
         <div class="form-group">

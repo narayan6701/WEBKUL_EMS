@@ -16,6 +16,7 @@
     <div class="profile-details">
         <h2>{{ $employee->name }}</h2>
         <p><strong>Email:</strong> {{ $employee->email }}</p>
+        <p><strong>Phone:</strong> {{ $employee->phone }}</p>
         <p><strong>Date of Birth:</strong> {{ \Carbon\Carbon::parse($employee->dob)->format('F j, Y') }}</p>
     </div>
 </div>

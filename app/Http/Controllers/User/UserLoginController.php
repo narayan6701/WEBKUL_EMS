@@ -13,7 +13,7 @@ class UserLoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'email' => ['email'],
             'password' => ['required'],
         ]);
 
@@ -25,7 +25,7 @@ class UserLoginController extends Controller
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        ]);
     }
 
     /**
@@ -45,12 +45,12 @@ class UserLoginController extends Controller
     public function showLoginForm()
     {
         // 1. If Admin is logged in, send to Admin Dashboard
-        if (\Illuminate\Support\Facades\Auth::guard('admin')->check()) {
+        if (Auth::guard('admin')->check()) {
             return redirect('/admin_dashboard');
         }
 
         // 2. If User is logged in, send to User Profile
-        if (\Illuminate\Support\Facades\Auth::check()) {
+        if (Auth::check()) {
             return redirect('/user_profile');
         }
 

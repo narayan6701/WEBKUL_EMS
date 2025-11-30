@@ -31,7 +31,20 @@
     color: #333;
 }
 
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
 .auth-card input[type="email"],
+.auth-card input[type="text"],
 .auth-card input[type="password"] {
     width: 100%;
     padding: 0.9rem 1rem; /* bigger touch targets */

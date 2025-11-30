@@ -76,29 +76,38 @@ class UserProfileController extends Controller
         $permanent = $user->addresses->where('type', 'permanent')->first();
         $current = $user->addresses->where('type', 'current')->first();
 
-        $checkAddr = function($addr, $input) {
-            if (!$addr) return true; // Address didn't exist, so it's a change
-            if ((string)$addr->line1 !== (string)($input['line1'] ?? '')) return true;
-            if ((string)$addr->line2 !== (string)($input['line2'] ?? '')) return true;
-            if ((string)$addr->city !== (string)($input['city'] ?? '')) return true;
-            if ((string)$addr->state !== (string)($input['state'] ?? '')) return true;
+        $checkAddr = function ($addr, $input) {
+            if (!$addr)
+                return true; // Address didn't exist, so it's a change
+            if ((string) $addr->line1 !== (string) ($input['line1'] ?? ''))
+                return true;
+            if ((string) $addr->line2 !== (string) ($input['line2'] ?? ''))
+                return true;
+            if ((string) $addr->city !== (string) ($input['city'] ?? ''))
+                return true;
+            if ((string) $addr->state !== (string) ($input['state'] ?? ''))
+                return true;
             return false;
         };
 
-        if ($checkAddr($permanent, $data['permanent'])) $changed = true;
-        if ($checkAddr($current, $data['current'])) $changed = true;
+        if ($checkAddr($permanent, $data['permanent']))
+            $changed = true;
+        if ($checkAddr($current, $data['current']))
+            $changed = true;
 
         // 5. Arrays (Qualifications / Experiences)
         $inQuals = array_values(array_filter(array_map('trim', $data['qualifications'] ?? []), fn($v) => $v !== ''));
         $exQuals = $user->qualifications->pluck('qualification')->map(fn($v) => trim($v))->filter()->values()->all();
-        if ($inQuals !== $exQuals) $changed = true;
+        if ($inQuals !== $exQuals)
+            $changed = true;
 
         $inExps = array_values(array_filter(array_map('trim', $data['experiences'] ?? []), fn($v) => $v !== ''));
         $exExps = $user->experiences->pluck('experience')->map(fn($v) => trim($v))->filter()->values()->all();
-        if ($inExps !== $exExps) $changed = true;
+        if ($inExps !== $exExps)
+            $changed = true;
 
         // --- RETURN IF NO CHANGES ---
-        if (! $changed) {
+        if (!$changed) {
             if ($request->expectsJson()) {
                 return response()->json(['message' => 'No changes to save'], 200);
             }

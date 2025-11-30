@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name',150);
             $table->date('dob');
             $table->string('email',150)->unique();
+            $table->string('phone', 10)->unique();
             $table->string('password',255);
             $table->string('profile_picture',255)->nullable()->default('images/default_profile.jpg');
             $table->timestamp('created_at')->useCurrent();

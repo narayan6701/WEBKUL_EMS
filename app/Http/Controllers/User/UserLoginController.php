@@ -12,19 +12,28 @@ class UserLoginController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['email'],
+        $request->validate([
+            'cred' => ['required'], // Input name in form should be 'cred'
             'password' => ['required'],
         ]);
 
+        $input = $request->input('cred');
+
+        // Check if input is Email or Phone
+        $loginType = filter_var($input, FILTER_VALIDATE_EMAIL) ? 'email' : 'phone';
+
+        $credentials = [
+            $loginType => $input,
+            'password' => $request->password
+        ];
+
         if (Auth::attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
-
             return redirect()->intended('/user_profile');
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'cred' => 'The provided credentials do not match our records.',
         ]);
     }
 

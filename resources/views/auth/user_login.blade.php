@@ -21,7 +21,7 @@
         
         <div class="form-group">
             <label for="cred">Email or Phone</label>
-            <input id="cred" type="text" name="email" required autofocus placeholder="Enter your Email / Phone">
+            <input id="cred" type="text" name="cred" required autofocus placeholder="Enter your Email / Phone">
         </div>
 
         <div class="form-group">

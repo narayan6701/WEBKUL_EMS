@@ -18,16 +18,13 @@ class UserLoginController extends Controller
         ]);
 
         $input = $request->input('cred');
+        $remember = $request->filled('remember');
 
-        // Check if input is Email or Phone
-        $loginType = filter_var($input, FILTER_VALIDATE_EMAIL) ? 'email' : 'phone';
+        $emailCreds = ['email' => $input, 'password' => $request->password];
+        $phoneCreds = ['phone' => $input, 'password' => $request->password];
 
-        $credentials = [
-            $loginType => $input,
-            'password' => $request->password
-        ];
 
-        if (Auth::attempt($credentials, $request->filled('remember'))) {
+        if (Auth::attempt($emailCreds, $remember) || Auth::attempt($phoneCreds, $remember)) {
             $request->session()->regenerate();
             return redirect()->intended('/user_profile');
         }
